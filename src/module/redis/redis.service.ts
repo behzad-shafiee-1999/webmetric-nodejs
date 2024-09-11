@@ -11,9 +11,9 @@ export class RedisService
   ) { }
  
   
-  async set ( key: string, value: any ,ttl:string )
+  async set ( key: string, value: any ,ttl:number )
   {
-    return await this.redis.set( key, value)
+    return await this.redis.set( key, value,"EX",ttl)
   }
 
   async get ( key: string )

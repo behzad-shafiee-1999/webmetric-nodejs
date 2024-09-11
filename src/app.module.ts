@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { UserModule } from './module/user/user.module';
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { RedisModule } from './module/redis/redis.module';
+import { UserModule } from './module/user/user.module';
 
 @Module({
   imports: [
@@ -14,7 +15,9 @@ import { APP_GUARD } from '@nestjs/core';
       ttl: 60000,
       limit: 10,
     }]),
-    UserModule],
+    RedisModule.forRootAsync(process.env.REDIS_HOST, +process.env.REDIS_PORT, process.env.REDIS_PASSWORD),
+    UserModule,
+  ],
   controllers: [],
   providers: [
     {

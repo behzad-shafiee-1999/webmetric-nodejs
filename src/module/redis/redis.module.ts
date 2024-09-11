@@ -3,40 +3,35 @@ import { Redis } from 'ioredis'
 import { RedisService } from './redis.service'
 
 @Global()
-@Module( {} )
-export class RedisModule
-{
-  static forRootAsync ( host: string, port: number ,password:string)
-  {
+@Module({})
+export class RedisModule {
+  static forRootAsync(host: string, port: number, password: string) {
     return {
       module: RedisModule,
       providers: [
         {
           provide: 'RedisClient',
-          useFactory : () =>
-          {
-            const redisInstance = new Redis( {
+          useFactory: () => {
+            const redisInstance = new Redis({
               host,
-              port,   
+              port,
               password
-            } )
+            })
 
-            redisInstance.on( 'error', e =>
-            {
+            redisInstance.on('error', e => {
               console.log(e);
-              
-              throw new Error( `Redis connection failed: ${ e }` )
-            } )
-            redisInstance.on( 'connect', () =>
-            {
-              console.log( `Redis connected successfully` )
-            } )
 
+              throw new Error(`Redis connection failed: ${e}`)
+            })
+            redisInstance.on('connect', () => {
+              console.log(`Redis connected successfully`)
+            })
             return redisInstance
           }
-        },RedisService
+        },
+        RedisService
       ],
-      exports:[RedisService]
+      exports: [RedisService]
     }
   }
 }
