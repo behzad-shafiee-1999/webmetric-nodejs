@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { SwaggerConfig } from './common/function/swagger.function';
 import { ConfigService } from '@nestjs/config';
+import { ClusterService } from './module/cluster/cluster.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -26,6 +27,5 @@ async function bootstrap() {
     
   });
 }
-
-
 bootstrap();
+// ClusterService.clusterize(bootstrap);
