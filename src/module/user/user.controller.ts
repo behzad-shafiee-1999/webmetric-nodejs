@@ -9,8 +9,8 @@ export class UserController {
 
   @Get('data')
   @ApiQuery({ name: "user_id", type: String, required: true })
-  findAll(@Query("user_id") user_id: string) {
-    return this.userService.findAll(user_id);
+  findOne(@Query("user_id") user_id: string) {
+    return this.userService.findOne(user_id);
   }
 
 }
