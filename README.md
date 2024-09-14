@@ -1,5 +1,5 @@
-```bash
 ## To run app:
+```bash
 $ npm i 
 $ pm2 start dist/main.js -i max
 ```
