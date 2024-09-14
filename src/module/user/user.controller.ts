@@ -1,16 +1,15 @@
-import { Controller, Get, Query } from '@nestjs/common';
-import { ApiQuery, ApiTags } from '@nestjs/swagger';
-import { UserService } from './user.service';
+import { Controller, Get, Query } from '@nestjs/common'
+import { ApiQuery, ApiTags } from '@nestjs/swagger'
+import { UserService } from './user.service'
 
-@ApiTags("user")
-@Controller("user")
+@ApiTags('user')
+@Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+    constructor(private readonly userService: UserService) {}
 
-  @Get('data')
-  @ApiQuery({ name: "user_id", type: String, required: true })
-  findOne(@Query("user_id") user_id: string) {
-    return this.userService.findOne(user_id);
-  }
-
+    @Get('data')
+    @ApiQuery({ name: 'user_id', type: String, required: true })
+    findOne(@Query('user_id') user_id: string) {
+        return this.userService.findOne(user_id)
+    }
 }
