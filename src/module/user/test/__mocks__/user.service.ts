@@ -1,5 +1,5 @@
-import { userSub } from '../subs/user.sub';
+import { userSub } from '../subs/user.sub'
 
 export const mcokUserService = jest.fn().mockReturnValue({
-  findOne: jest.fn().mockResolvedValue(userSub()),
-});
+    findOne: jest.fn().mockResolvedValue(userSub())
+})
