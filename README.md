@@ -1,6 +1,8 @@
-###To run app:
-npm i 
-pm2 start dist/main.js -i max
+```bash
+To run app:
+## npm i 
+## pm2 start dist/main.js -i max
+```
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
