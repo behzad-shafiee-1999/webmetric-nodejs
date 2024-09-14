@@ -1,7 +1,7 @@
 ```bash
-To run app:
-## npm i 
-## pm2 start dist/main.js -i max
+## To run app:
+$ npm i 
+$ pm2 start dist/main.js -i max
 ```
 
 <p align="center">
