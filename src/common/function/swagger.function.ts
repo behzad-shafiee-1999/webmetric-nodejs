@@ -1,23 +1,15 @@
-import { Inject, Injectable } from '@nestjs/common'
-import { Redis } from 'ioredis'
+import { INestApplication } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
-
-@Injectable()
-export class RedisService
-{
-
-  constructor (
-    @Inject( 'RedisClient' ) private readonly redis: Redis
-  ) { }
- 
-  
-  async set ( key: string, value: any ,ttl:number )
-  {
-    return await this.redis.set( key, value,"EX",ttl)
-  }
-
-  async get ( key: string )
-  {
-    return await this.redis.get( key )
-  }
+export function SwaggerConfig(app: INestApplication) {
+  const config = app.get(ConfigService)
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle(config.get('SWAGGER_TITLE'))
+    .setDescription(config.get('SWAGGER_DESCRIPTION'))
+    .setVersion(config.get('SWAGGER_VERSION'))
+    .addBearerAuth()
+    .build()
+  const document = SwaggerModule.createDocument(app, swaggerConfig)
+  SwaggerModule.setup('doc', app, document)
 }
