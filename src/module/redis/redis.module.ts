@@ -17,11 +17,8 @@ export class RedisModule {
               port,
               password
             })
-
             redisInstance.on('error', e => {
-              console.log(e);
-
-              throw new Error(`Redis connection failed: ${e}`)
+              console.log(`Redis connection failed: ${e}`);
             })
             redisInstance.on('connect', () => {
               console.log(`Redis connected successfully`)
