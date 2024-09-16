@@ -1,8 +1,8 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { SwaggerConfig } from './common/function/swagger.function';
 import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
+import { Transport } from '@nestjs/microservices';
+import { AppModule } from './app.module';
+import { SwaggerConfig } from './common/function/swagger.function';
 import { ClusterService } from './module/cluster/cluster.service';
 
 async function bootstrap() {
